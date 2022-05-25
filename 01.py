@@ -1,12 +1,33 @@
+# Это игра по угадыванию чисел
 import random
-i = random.randit(1,100)
-s = random.randit(1,100)
-i = 7
-s = 7
-print(i)
-print(s)
-if i == s
-    print(str(i)+' = '+str(s))
-else:
-    print(str(i)+' = '+str(s))
-
+# Мы подклдючили модуль на рандом программе
+print('Привет, как тебя зовут?')
+myName = input()
+# поздоровались, спросили имя, игрок ввёл своё имя
+print(myName+', я загадываю число от 1 до 100')
+chislo = random.randint(1,100)
+# сказали игроку в каком диапозоне загадываем число и загадали его
+for i in range(7):
+    # даём семь попытки
+    print('Попробуй отгадайю. Введи число от 1 до 100')
+    vybor = input()
+    # проверяем, что игрок ввёл число, если нет, то требуем ещё раз ввести 
+    while True:
+        if vybor.isdigit():
+            break
+        else:
+            print('Введи число')
+            vybor = input()
+    vybor = int(vybor)
+    # игрок ввёл число, строку перевели в число и записали в переменную 
+    if chislo > vybor:
+        print('загаданное число больше')
+    if chislo < vybor:
+        print('Загаданное число меньше')
+    if chislo == vybor:
+        break
+# сравниваем числа, даём подсказку, прерываем попытки если игрок угадал число
+if chislo == vybor:
+    print('Поздравляю! Ты отгадал число')
+if chislo != vybor:
+    print('Увы! Ты не отгадал число'+str(chislo))
