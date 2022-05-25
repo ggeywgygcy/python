@@ -30,4 +30,4 @@ for i in range(7):
 if chislo == vybor:
     print('Поздравляю! Ты отгадал число')
 if chislo != vybor:
-    print('Увы! Ты не отгадал число'+str(chislo))
+    print('Увы! Ты не отгадал число '+str(chislo))
