@@ -47,6 +47,7 @@ def intro():
     Заинтересовавшись вы подходите к человеку.
     
     Он предлагает вам испытать свою удачу
+
     и сыграть с ним на деньги''')
 
 def proverka(dengi,minStavka):
@@ -65,12 +66,40 @@ def proverka(dengi,minStavka):
                 else:
                     break
             else:
-                print('Ставка не может быть больше минимальной')
+                print('Ставка не может быть меньше минимальной')
                 stavka = input()
         else:
             print('Надо вводить только цифры')
             stavka = input()
     return stavka 
+def sravnenie(sharik,naperstok):
+    if sharik == naperstok:
+        naperstok = True   
+    else:
+        naperstok = False
+    return naperstok
+
+def intro2():
+    print('''       После того как вы сделали ставку , 
+    
+    ведущий начинает крутить наперстки по столу, потом он остановился
+    
+    и предложил выбрать напёрсток в котором по твоему мнению лежит шарик.''')
+def vibor():
+    print('Выберите напёрсток в котром лежит шарик')
+    nap = input()
+    while True:
+        if nap.isdigit():
+           if (nap in '123') and (len(nap)==1):
+               nap = int(nap)
+               break
+           else:
+               print('Нужно вводить только цифры от одного до трёх!')
+               nap = input()
+        else:
+            print('Надо вводить только цифры')
+            nap = input()
+    return nap
 
  # hgekfgfgyiggyggg
  # ОСНОВНОЕ ТЕЛО ПРОГРАММЫ 
@@ -79,4 +108,14 @@ def proverka(dengi,minStavka):
 many,minBig = nastroyki()
 intro()
 stavkaIgroka = proverka(many,minBig)
- 
+intro2()
+dbz = random.randint(1,3)
+dbS = vibor()
+if sravnenie(dbz,dbS):
+    print('Ты выйграл, ураааааааааааааааааа')
+    many = many + stavkaIgroka
+else:
+    print('Ххахахахахахахахахахахахах, ты проиграл -10000;')
+    many = many - stavkaIgroka
+
+print(many)
