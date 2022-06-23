@@ -101,21 +101,60 @@ def vibor():
             nap = input()
     return nap
 
+def again():
+    # сщздание бесконечного цикла
+    while True:
+        # задаём вопрос и получаем ответ
+        print('Хотите играть опять?')
+        guess = input()
+        guess = guess.lower()
+        # проверяем ответ на совпадение со следующими фразами
+        # "Да","да","д"
+        # усли есть совпадение  то переменной присваиваем значение True
+        # и прерываем цикл командой return
+        if (guess == 'да') or (guess == 'д') or (guess == 'Да'):
+            return True
+        # проверяем ответ на совпадение со следующими фразами
+        # "Нет","нет","н"
+        # усли есть совпадение  то переменной присваиваем значение False
+        # и прерываем цикл командой return
+        elif (guess == 'нет') or (guess == 'Нет') or (guess == 'н'):
+            return False
+        # если совпадения с первыми двумя случаями нет
+        # говорим пользователю, что не поняли его ответа
+        else:
+            print('Я не понял ответа')
+            return guess
+
  # hgekfgfgyiggyggg
  # ОСНОВНОЕ ТЕЛО ПРОГРАММЫ 
  # FRGGGGGGYEGYFGYGY
 
+    
 many,minBig = nastroyki()
 intro()
-stavkaIgroka = proverka(many,minBig)
-intro2()
-dbz = random.randint(1,3)
-dbS = vibor()
-if sravnenie(dbz,dbS):
-    print('Ты выйграл, ураааааааааааааааааа')
-    many = many + stavkaIgroka
-else:
-    print('Ххахахахахахахахахахахахах, ты проиграл -10000;')
-    many = many - stavkaIgroka
 
+while True:
+    stavkaIgroka = proverka(many,minBig)
+    intro2()
+    dbz = random.randint(1,3)
+    dbS = vibor()
+    if sravnenie(dbz,dbS):
+        print('Ты выйграл, ураааааааааааааааааа')
+        many = many + stavkaIgroka
+    else:
+        print('Ххахахахахахахахахахахахах, ты проиграл -10000;')
+        many = many - stavkaIgroka
+
+    if many > minBig:
+        # зададим вопрос хочет ли человек играть ещё
+        if again():
+            print('Продолжаем играть. В наличии'+str(many))
+        else:
+            print('Хорошо. Игра закончена. В наличии '+str(many))
+            break
+    else:
+        print('У вас осталось денег меньше мрнимальной ставки.')
+        print('В наличии'+str(many)+'. Игра будет завершена')
+        break
 print(many)
