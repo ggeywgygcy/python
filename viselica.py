@@ -2,6 +2,7 @@
 # РАЗДЕЛ ИМПОРТА МОДУЛЕЙ
 # HBVJVWEJFVJWEVFVWU
 import random
+from this import s
 # KHBFHHVVVVVIVIVVV
 # РАЗДЕЛ СОЗДАННЫХ ФУНКЦИЙ
 # VJVJVGVJVJGVVJGVGVVGV
@@ -66,7 +67,7 @@ def prBukvi(per666):
         bukwa = bukwa.lower()
         if len(bukwa) != 1:
             print('Надо ввести только одну букву')
-        elif bukwa not in 'абвгдежзийклмнопрстуфхшщьыъэюя':
+        elif bukwa not in 'абвгдежзийклмнопрстуфхчшщьыъэюя':
             print('Надо вводить только русские буквы')
         elif bukwa in per666:
             print('Вы уже называли эту букву')
@@ -113,20 +114,51 @@ def again():
             print('Я не понял ответа')
 
 
+
 # 8888888888888888888888
 # ОСНОВНОЕ ТЕЛО ПРОГРАММЫ
 # per2014 = '_'*len(sicretSlovo)
 
 vis = chotoDrugoe()
 aboba = genZNCH()
-print(aboba[5])
 secret = vibor(aboba)
-print(secret)
 
 strokaErrS = ''
 strokaYesF = ''
+GO = False
 
 while True:
     schinomontasch(vis,strokaErrS,strokaYesF,secret)
     vvedenie = prBukvi(strokaErrS+strokaYesF)
 
+    if vvedenie in secret:
+        strokaYesF = strokaYesF + vvedenie
+
+        konetsG = True
+        for i in range(len(secret)):
+            if secret[i] not in strokaYesF:
+                konetsG = False
+                break
+        if konetsG:
+            print('ДА! Секретное слово - "'+strokaYesF+'"! Вы угадали! ')
+            GO = True
+    else:
+        strokaErrS = strokaErrS + vvedenie
+
+        if len(strokaErrS)==len(vis)-1:
+            schinomontasch(vis,strokaErrS,strokaYesF,secret)
+            print('''                           Вы исчерпали все попытки!
+        Неугаданно букв: '''+str(len(strokaErrS))+'''
+        угаданно букв: '''+str(len(strokaYesF))+'''
+        было загаданно слово: '''+secret+'.')
+            GO = True
+    
+    if GO == True:
+        if again():
+            secret = vibor(aboba)
+
+            strokaErrS = ''
+            strokaYesF = ''
+            GO = False 
+        else:
+            break
