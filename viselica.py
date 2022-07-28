@@ -52,13 +52,51 @@ def chotoDrugoe():
     return trup
 
 def genZNCH():
-    per1 = 'аист акула волк кит паук  агути абия кирилл леново мамонт слон сипуха морж жаворонок шелкопряд барсук бобр белка конь лошадь лис крокодил алигатор маккака попугай жук бабочка ящерица лягушка жаба ворон грач кот собака орёл крыса мышь бабуин хомяк медведь енот волк уж змея ягненок баран козел овца '.split() 
+    per1 = {'животные':'аист акула волк кит паук  агути абия леново мамонт слон сипуха морж жаворонок шелкопряд барсук бобр белка конь лошадь лис крокодил алигатор маккака попугай жук бабочка ящерица лягушка жаба ворон грач кот собака орёл крыса мышь бабуин хомяк медведь енот волк уж змея ягненок баран козел овца '.split(),
+'фигуры':'круг квадрат прямоугольник параллелепипед ромб шестиугольник конус куб'.split(),
+'овощи':'помидор огурец тыква кабачок лук чеснок редька свекла редиска'.split()}
     return per1
 
-def vibor(imya):
-    per0 = random.randint(0,len(imya)-1)
-    per5 = imya[per0]
-    return per5
+def vibor(slovar,chtoto):
+    if chtoto == 'Л':
+        for i in range(len(list(slovar.keys()))):
+            print('Для выбора категории '+list(slovar.keys())[i]+' введите '+str(i))   
+
+        while True:
+            katSl = input()
+            if not katSl.isdigit():
+                print('введите только цифры')
+            else:
+                katSl = int(katSl)
+                if katSl > len(list(slovar.keys())):
+                    print('вы ввели неверное число')
+                else:
+                    break
+
+        kategoria = list(slovar.keys())[katSl]
+    else:
+        kategoria = random.choice(list(slovar.keys()))
+
+    indexSl = random.randint(0,len(slovar[kategoria])-1)
+
+    return [slovar[kategoria][indexSl],kategoria]
+
+def viborUs():
+    while True:
+        print('Выберите уровень сложности:')
+        print('Чтобы выбрать легкий уровень сложности введите "Л"')
+        print('Чтобы выбрать легкий уровень сложности введите "С"')
+        print('Чтобы выбрать легкий уровень сложности введите "Т"')
+        lvl = input()
+        lvl = lvl.upper()
+        if len(lvl) !=1:
+            print('Надо вводить только один символ')
+        elif lvl not in 'ЛСТ':
+            print('Вы ввели неверную букву')
+        else:
+            return lvl
+
+
 
 def prBukvi(per666):
     while True:
@@ -74,7 +112,9 @@ def prBukvi(per666):
         else:
             return bukwa
 
-def schinomontasch(viselici,errorBuc,yesBuc,sicretSlovo):
+def schinomontasch(viselici,errorBuc,yesBuc,sicretSlovo,uS,kS):
+    if uS in 'ЛС':
+        print(kS)
     print(viselici[len(errorBuc)])
     print()
     print('ошибочные буквы: '+errorBuc)
@@ -95,7 +135,6 @@ def again():
         # задаём вопрос и получаем ответ
         print('Хотите играть опять?')
         guess = input()
-        guess = guess.lower()
         # проверяем ответ на совпадение со следующими фразами
         # "Да","да","д"
         # усли есть совпадение  то переменной присваиваем значение True
@@ -105,7 +144,7 @@ def again():
         # проверяем ответ на совпадение со следующими фразами
         # "Нет","нет","н"
         # усли есть совпадение  то переменной присваиваем значение False
-        # и прерываем цикл командой return
+        # и прерываем цикл команeдой return
         elif (guess == 'нет') or (guess == 'Нет') or (guess == 'н'):
             return False
         # если совпадения с первыми двумя случаями нет
@@ -115,20 +154,23 @@ def again():
 
 
 
+
 # 8888888888888888888888
 # ОСНОВНОЕ ТЕЛО ПРОГРАММЫ
 # per2014 = '_'*len(sicretSlovo)
 
 vis = chotoDrugoe()
 aboba = genZNCH()
-secret = vibor(aboba)
+
+levelSl = viborUs()
+secret,kategoriaSl = vibor(aboba,levelSl)
 
 strokaErrS = ''
 strokaYesF = ''
 GO = False
 
 while True:
-    schinomontasch(vis,strokaErrS,strokaYesF,secret)
+    schinomontasch(vis,strokaErrS,strokaYesF,secret,levelSl,kategoriaSl)
     vvedenie = prBukvi(strokaErrS+strokaYesF)
 
     if vvedenie in secret:
@@ -153,9 +195,10 @@ while True:
         было загаданно слово: '''+secret+'.')
             GO = True
     
-    if GO == True:
+    if GO:
         if again():
-            secret = vibor(aboba)
+            levelSl = viborUs()
+            secret,kategoriaSl = vibor(aboba,levelSl)
 
             strokaErrS = ''
             strokaYesF = ''
