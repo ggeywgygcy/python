@@ -42,7 +42,17 @@ def kch():
     else:
         return 'Человек'
     
-    
+def goldexpiriensreqiem(per1,p2,p4):
+    per1[p4] = p2
+
+def kaknazvat(bd,lt):
+    return ((bd[1] == lt and bd[2] == lt and bd[3] == lt) or 
+           (bd[4] == lt and bd[5] == lt and bd[6] == lt) or 
+           (bd[7] == lt and bd[8] == lt and bd[9] == lt) or
+           (bd[7] == lt and bd[4] == lt and bd[1] == lt)or
+           (bd[8] == lt and bd[5] == lt and bd[2] == lt)) 
+           
+
 
     
 
@@ -50,8 +60,12 @@ def kch():
 # ОСНОВНОЕ ТЕЛО ПРОГРАММЫ
 # FF
 
-db([' ','X',' ',' ','X','O',' ','X',' ','O'])
 
-print(pl())
-
-print(kch())
+per1 = [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+db(per1)
+print(kaknazvat(per1,'X'))
+per1[9] = 'X'
+per1[6] = 'X'
+per1[3] = 'X'
+db(per1)
+print(kaknazvat(per1,'X'))
