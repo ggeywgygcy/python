@@ -50,8 +50,37 @@ def kaknazvat(bd,lt):
            (bd[4] == lt and bd[5] == lt and bd[6] == lt) or 
            (bd[7] == lt and bd[8] == lt and bd[9] == lt) or
            (bd[7] == lt and bd[4] == lt and bd[1] == lt)or
-           (bd[8] == lt and bd[5] == lt and bd[2] == lt)) 
+           (bd[8] == lt and bd[5] == lt and bd[2] == lt)or
+           (bd[9] == lt and bd[6] == lt and bd[3] == lt)or
+           (bd[7] == lt and bd[5] == lt and bd[3] == lt)or
+           (bd[1] == lt and bd[3] == lt and bd[9] == lt)) 
+
+def gBC(board):
+    CB = []
+    for i in board:
+        CB.append(i)
+    return CB
+
+def isFS(b,m):
+    return b[m] == ' '
+
+def gPM(boa):
+    move = ' '
+    while move not in '1 2 3 4 5 6 7 8 9' .split() or not isFS(boa,int(move)):
+        print('Ваш следующий ход? введите номер яйчейки (1-9)')
+        move = input()
+    return int(move)
            
+def cRMN(board2,naklz):
+    dragonball = []
+    for i in naklz:
+        if isFS(board2,i):
+            dragonball.append(i)
+
+    if len(dragonball) != 0:
+        return random.choice(dragonball)
+    else:
+        return None
 
 
     
@@ -60,12 +89,33 @@ def kaknazvat(bd,lt):
 # ОСНОВНОЕ ТЕЛО ПРОГРАММЫ
 # FF
 
+#fftftyf
+board = [' ']*10
+mL = [1,3,7,9]
 
-per1 = [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
-db(per1)
-print(kaknazvat(per1,'X'))
-per1[9] = 'X'
-per1[6] = 'X'
-per1[3] = 'X'
-db(per1)
-print(kaknazvat(per1,'X'))
+hod = cRMN(board,mL)
+goldexpiriensreqiem(board,'0',hod)
+db(board)
+
+board[1] = 'X'
+board[7] = 'X'
+board[9] = 'X'
+
+hod = cRMN(board,mL)
+goldexpiriensreqiem(board,'0',hod)
+db(board)
+
+
+
+
+
+
+
+
+
+
+board[5] = '0'
+db(board)
+m = gPM(board)
+goldexpiriensreqiem(board,'X',m)
+db(board)
