@@ -25,7 +25,7 @@ def pl():
     letter = ''
     while not (letter=='X' or letter=='O'):
         print(''' Выберите Х или О 
-        для выбора введите соответственно Х или О
+     ef kch(   для выбора введите соответственно Х или О
         на англ. раскладке. ''')
 
         letter = input().upper()
@@ -35,7 +35,7 @@ def pl():
         else:
             return ['O','X']
 
-def kch():
+def iFS():
     # случайным образом выбираем ктот будет ходить первым
     if random.randint(0,1) == 0:
         return 'Компьютер'
@@ -82,40 +82,118 @@ def cRMN(board2,naklz):
     else:
         return None
 
-
+def h1(pc,cl):
     
+    if cl == 'X':
+        pl = 'O'
+    else:
+        pl = 'X'
+    
+    for i in range(1,10):
+        boardC = gBC(board)
+
+    if gPM(board,i):
+        kaknazvat(boardC,cl,i)
+        
+        if goldexpiriensreqiem(boardC,cl):
+            return i  
+    
+    for i in range(1,10):
+            boardC = gBC(board)
+            gPM         
+            if goldexpiriensreqiem(boardC,pl):
+                return i  
+
+    move = cRMN(board,[1,3,7,9])
+    if move != None:
+        return move
+
+    if iFS(board,5):
+        return 5
+
+    return cRMN(board,[1,3,7,9])
+
+def isBF(board):
+    for i in range(1,10):
+        if iFS(board,i):
+            return False
+    return True    
+
+
+
+
+
+
+
+
+
 
 # tcu
 # ОСНОВНОЕ ТЕЛО ПРОГРАММЫ
 # FF
 
-#fftftyf
-board = [' ']*10
-mL = [1,3,7,9]
+#fftfty
+print('ИГРА КРЕСТИКИ НОЛИКИ888')
 
-hod = cRMN(board,mL)
-goldexpiriensreqiem(board,'0',hod)
-db(board)
+while True:
+    theBoard = [' ']*10
 
-board[1] = 'X'
-board[7] = 'X'
-board[9] = 'X'
+    pl,cl = h1()
 
-hod = cRMN(board,mL)
-goldexpiriensreqiem(board,'0',hod)
-db(board)
+    turn = gPM()
+    print(''+turn+' ходит первым.')
+    
+    while gIP:
+        if turn == 'Человек':
+            dB(theBoard)
+            move = gPM
+            kaknazvat(theBoard,pl,move)
 
+            if goldexpiriensreqiem(theBoard,pl):
+                dB(theBoard)
+                print('Ты выйграл')
+                gpm = False
+            else:
+                if isBF(theBoard):
+                    dB(theBoard)
+                    print('Ничья')
+                    break
+                else:
+                    turn = 'Компьютер'
+        else:    
+            move = gCM(theBoard,cl)
+            goldexpiriensreqiem(theBoard,cl,move)
 
+            if isBF(theBoard,cl):
+                dB(theBoard)
+                goldexpiriensreqiem(theBoard,cl,move)
 
+            while gIP:
+                if turn == 'Человеек':
+                    dB(theBoard)
+                move = gPM
+            kaknazvat(theBoard,pl,move)
 
+            if goldexpiriensreqiem(theBoard,pl):
+                dB(theBoard)
+                print('Компьютер был сильнее')
+                gpm = False
+            else:
+                if isBF(theBoard):
+                    db(theBoard)
+                    print('Ничья')
+                    break
+                else:
+                    turn = 'Человек'
+                
 
-
-
-
-
-
-board[5] = '0'
-db(board)
-m = gPM(board)
-goldexpiriensreqiem(board,'X',m)
-db(board)
+            if isBF(theBoard,cl):
+                dB(theBoard)
+                goldexpiriensreqiem(theBoard,cl,move)
+            else:    
+                    move = gCM(theBoard,cl)
+                    goldexpiriensreqiem(theBoard,cl,move)
+            
+            print('Сыграем ещё раз? (да или нет)')
+            if not input.lower().start('д'):
+                break
