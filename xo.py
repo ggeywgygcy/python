@@ -85,9 +85,9 @@ def cRMN(board2,naklz):
 def h1(pc,cl):
     
     if cl == 'X':
-        pl = 'O'
+        pc = 'O'
     else:
-        pl = 'X'
+        pc = 'X'
     
     for i in range(1,10):
         boardC = gBC(board)
@@ -138,7 +138,7 @@ print('ИГРА КРЕСТИКИ НОЛИКИ888')
 while True:
     theBoard = [' ']*10
 
-    pl,cl = h1()
+    pc,cl = h1(pc,cl)
 
     turn = gPM()
     print(''+turn+' ходит первым.')
@@ -160,21 +160,21 @@ while True:
                     break
                 else:
                     turn = 'Компьютер'
-        else:    
+        else:
             move = gCM(theBoard,cl)
-            goldexpiriensreqiem(theBoard,cl,move)
+            db(theBoard,cl,move)
 
             if isBF(theBoard,cl):
                 dB(theBoard)
-                goldexpiriensreqiem(theBoard,cl,move)
+                db(theBoard,cl,move)
 
             while gIP:
                 if turn == 'Человеек':
                     dB(theBoard)
                 move = gPM
-            kaknazvat(theBoard,pl,move)
+            kaknazvat(theBoard,pc,move)
 
-            if goldexpiriensreqiem(theBoard,pl):
+            if db(theBoard,pl):
                 dB(theBoard)
                 print('Компьютер был сильнее')
                 gpm = False
@@ -189,10 +189,10 @@ while True:
 
             if isBF(theBoard,cl):
                 dB(theBoard)
-                goldexpiriensreqiem(theBoard,cl,move)
+                db(theBoard,cl,move)
             else:    
                     move = gCM(theBoard,cl)
-                    goldexpiriensreqiem(theBoard,cl,move)
+                    db(theBoard,cl,move)
             
             print('Сыграем ещё раз? (да или нет)')
             if not input.lower().start('д'):
