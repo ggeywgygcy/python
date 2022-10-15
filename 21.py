@@ -5,39 +5,109 @@
 # hgh
 import random
 from this import s
+
 # uju
 # РАЗДЕЛ СОЗДАННЫХ ФУНКЦИЙ 
 # hbh
 
-def F1():
-
-
-def F2():
+def intro():
     print('Приветствую тебя! Вы играете в игру "21"')
     print() 
-    print('Создатель засекречен')
-    print()
-    print('Правила:')
+    print('Создатель анонимен')
 
-def F3(per1,per2):
-    kub1 = random.randint(1,2)
-    kub2 = random randint(1,2)
+def voprosPravil():
+    while True:
+        print('Хотите посмотреть правила пред игрой?');
+        otvet = input()
+        otvet = otvet.lower()
+        if (otvet == 'да') or (otvet == 'д') or (otvet == 'Д') or (otvet == 'l'):
+            return True
+        elif (otvet == 'ytn') or (otvet == 'нет') or (otvet == 'н'):
+            return False
+        else:
+            print('Программа не поняла ответ!')
+            
+
+def kubiki():
+    kub = ('''
+ _________
+|         |
+|         |
+|         |
+|         |
+|_________|
+
+ _________
+|         |
+|         |
+|    *    |
+|         |
+|_________|
+
+ _________
+|         |
+|         |
+|   **    |
+|         |
+|_________|
+
+ _________
+|         |
+|   * * * |
+|         |
+|         |
+|_________|
+
+ _________
+|         |
+|  ****   |
+|         |
+|         |
+|_________|
+
+ _________
+|         |
+|  *****  |
+|         |
+|         |
+|_________|
+
+ _________
+|         |
+| ******  |
+|         |
+|         |
+|_________|
+    
+        ''')
+
+def vivodPoiya(kubiki):
+
+
+
+
+
+
+
+
+
+
+def brosokKubika(kub1,kub2):
+    kub1 = random.randint(1,6)
+    kub2 = random.randint(1,6)
 
     if kub1 == kub2:
         same_num = True
     else:
         same_num = False
-    return same_num
+    return same_num 
 
-def F4(per1,per2):
-
-
+def Pravila():
+    print('у меня не получается нормально написать правила')
 
 def again():
-    # сщздание бесконечного цикла
     while True:
-        # задаём вопрос и получаем ответ
-        print('Хотите играть опять?')
+        print('Хотите играть опять?(да или нет)')
         guess = input()
         guess = guess.lower()
         # проверяем ответ на совпадение со следующими фразами
@@ -57,6 +127,17 @@ def again():
         else:
             print('Я не понял ответа')
             return guess
+
+# hiuvhuthbhghtiuh
+# ОСНОВНОЕ ТЕЛО ПРОГРАММЫ 
+# BVBBGBVITBIVBIHTB
+
+otvet = voprosPravil()
+if otvet:
+    Pravila()
+
+
+
 
 
     
