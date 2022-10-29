@@ -154,7 +154,10 @@ while game:
     summaK = 0
     summa = summaCh + kub1 + kub2
 
-    displai(gamer,img,k1,k2,summaK,summaCh)
+displai(gamer,img,k1,k2,summaCh,summaK)
+
+intro()
+ 
    
 
 
