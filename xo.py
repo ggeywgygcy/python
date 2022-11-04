@@ -90,28 +90,28 @@ def h1(pc,cl):
         pc = 'X'
     
     for i in range(1,10):
-        boardC = gBC(board)
+        boardC = gBC(boardC)
 
-    if gPM(board,i):
+    if gPM(boardC,i):
         kaknazvat(boardC,cl,i)
         
         if goldexpiriensreqiem(boardC,cl):
             return i  
     
     for i in range(1,10):
-            boardC = gBC(board)
+            boardC = gBC(boardC)
             gPM         
             if goldexpiriensreqiem(boardC,pl):
                 return i  
 
-    move = cRMN(board,[1,3,7,9])
+    move = cRMN(boardC,[1,3,7,9])
     if move != None:
         return move
 
-    if iFS(board,5):
+    if iFS(boardC,5):
         return 5
 
-    return cRMN(board,[1,3,7,9])
+    return cRMN(boardC,[1,3,7,9])
 
 def isBF(board):
     for i in range(1,10):
@@ -143,7 +143,7 @@ while True:
     turn = gPM()
     print(''+turn+' ходит первым.')
     
-    while gIP:
+    while iFS:
         if turn == 'Человек':
             dB(theBoard)
             move = gPM
@@ -161,21 +161,21 @@ while True:
                 else:
                     turn = 'Компьютер'
         else:
-            move = gCM(theBoard,cl)
+            move = iFS(theBoard,cl)
             db(theBoard,cl,move)
 
             if isBF(theBoard,cl):
                 dB(theBoard)
                 db(theBoard,cl,move)
 
-            while gIP:
+            while iFS:
                 if turn == 'Человеек':
-                    dB(theBoard)
+                    iFS(theBoard)
                 move = gPM
             kaknazvat(theBoard,pc,move)
 
             if db(theBoard,pl):
-                dB(theBoard)
+                iFS(theBoard)
                 print('Компьютер был сильнее')
                 gpm = False
             else:
@@ -188,10 +188,10 @@ while True:
                 
 
             if isBF(theBoard,cl):
-                dB(theBoard)
+                iFS(theBoard)
                 db(theBoard,cl,move)
             else:    
-                    move = gCM(theBoard,cl)
+                    move = iFS(theBoard,cl)
                     db(theBoard,cl,move)
             
             print('Сыграем ещё раз? (да или нет)')
