@@ -40,10 +40,7 @@ def proverka_ch(Num):
     if Num == '':
         return False
 
-    for i in Num:
-        if i = [1]
-           i = [2]
-           i = [3]
+    
 
     if Num not in '0 1 2 3 4 5 6 7 8 9' .split():
         return False
