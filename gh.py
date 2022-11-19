@@ -9,7 +9,7 @@ import random
 # V4EVRYIFIYVE
 
 KOLCHISEL = 3
-KOLPOPITOK = 15
+KOLPOPITOK = 5
 
 def generaciya():
     cifri = list(range(10))
@@ -39,8 +39,6 @@ def podskazki(ch_game,ch_secret):
 def proverka_ch(Num):
     if Num == '':
         return False
-
-    
 
     if Num not in '0 1 2 3 4 5 6 7 8 9' .split():
         return False
@@ -81,10 +79,11 @@ print(' Тепло         Одна цифра не отгадана, но не 
 print(' Горячо        Ничего не отгадано')
 
 while True:
-    secretNum = generaciya()
+    secretCif = generaciya()
     
     print('Итак. Я загадал число, у вас есть %s попыток для того что бы отгадать это число' %(KOLPOPITOK)) 
 
+    
 
     popytka = 1
     while popytka <= KOLPOPITOK:
@@ -92,15 +91,15 @@ while True:
         while len(chisloIg) != KOLCHISEL or not proverka_ch(chisloIg):
             print('попытка номер %s:' %(popytka)) 
             chisloIg = input()
-        print(podskazki(chisloIg,secretNum))
+        print(podskazki(chisloIg,secretCif))
 
         
         popytka += 1
 
-        if chisloIg == secretNum:
+        if chisloIg == secretCif:
             break
         if popytka > KOLPOPITOK:
-            print('Попыток больше не осталось. Язагадал число %s.' %(secretNum))
+            print('Попыток больше не осталось. Язагадал число %s.' %(secretCif))
     
     if not again():
         break

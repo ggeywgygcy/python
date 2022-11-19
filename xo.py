@@ -82,13 +82,14 @@ def cRMN(board2,naklz):
     else:
         return None
 
-def h1(pc,cl):
+def per4(cl,pc):
     
     if cl == 'X':
         pc = 'O'
     else:
-        pc = 'X'
-    
+        if cl == 'X':
+            pc = 'O'
+
     for i in range(1,10):
         boardC = gBC(boardC)
 
@@ -110,8 +111,10 @@ def h1(pc,cl):
 
     if iFS(boardC,5):
         return 5
-
-    return cRMN(boardC,[1,3,7,9])
+    
+    while True:
+        print(cl == 'X' , pc == 'O')
+        return cRMN(boardC,[1,3,7,9])
 
 def isBF(board):
     for i in range(1,10):
@@ -119,43 +122,35 @@ def isBF(board):
             return False
     return True    
 
-
-
-
-
-
-
-
-
-
 # tcu
 # ОСНОВНОЕ ТЕЛО ПРОГРАММЫ
 # FF
 
-#fftfty
+#ftyyty
 print('ИГРА КРЕСТИКИ НОЛИКИ888')
 
 while True:
     theBoard = [' ']*10
 
-    pc,cl = h1(pc,cl)
+    cl = per4(move,cl,pc)
+    pc = per4(move,cl,pc)
 
     turn = gPM()
-    print(''+turn+' ходит первым.')
+    print(''+turn+' ходит первper4ым.')
     
     while iFS:
         if turn == 'Человек':
-            dB(theBoard)
-            move = gPM
+            db(theBoard)
+            move = db
             kaknazvat(theBoard,pl,move)
 
             if goldexpiriensreqiem(theBoard,pl):
-                dB(theBoard)
+                db(theBoard)
                 print('Ты выйграл')
                 gpm = False
             else:
                 if isBF(theBoard):
-                    dB(theBoard)
+                    db(theBoard)
                     print('Ничья')
                     break
                 else:
@@ -165,7 +160,7 @@ while True:
             db(theBoard,cl,move)
 
             if isBF(theBoard,cl):
-                dB(theBoard)
+                iFS(theBoard)
                 db(theBoard,cl,move)
 
             while iFS:
