@@ -2,6 +2,8 @@
 # РАЗДЕЛ ИМПОРТА МОДУЛЕЙprint(strOne)print(strOne)(strOne)print(strOne)rint(strOne)print(strOne)int(strOne)
 # HBVJVWEJFVJWEVFVWU
 import random
+import math
+
 # KHBFHHVVVVVIVIVVV
 # РАЗДЕЛ СОЗДАННЫХ ФУНКЦИЙ
 # VJVJVGVJVJGVVJGVGVVGV
@@ -40,20 +42,53 @@ def dysplay(board):
 
     
     print()
-    
     print('   '+('0123456789'*6))
-    
     print(strOne)
 
+def randomSunduki(kolCh):
+    sunduk = []
+    while len(sunduk)<=kolCh:
+        newCh = [random.randint(0,59),random.randint(0,14)]
+        if newCh not in sunduk:
+            sunduk.append(newCh)
+    return sunduk
 
+
+
+def vopros(samVopros):
+       print(samVopros)
+       guess = input()
+       if (guess == 'да') or (guess == 'д') or (guess == 'Да'):
+            return True
+       elif (guess == 'нет') or (guess == 'Нет') or (guess == 'н'):
+            return False
+        # если совпадения с первыми двумя случаями нет
+        # говорим пользователю, что не поняли его ответа
+       else:
+            print('Я не понял ответа')
+
+
+def OdinHod(x,y):
+    return x>=0 and x<=59 and y>=0 and y<=14
+
+
+def makeMove(boArd,sanduk,x,y):
+    miniD = 100
+    for cx,cy in sanduk:
+        distanciya = math.sqrt((cx-x)*(cx-x)+(cy-y)*(cy-y))
+        if distanciya<miniD:
+            miniD=distanciya
 
 # tcu
 # ОСНОВНОЕ ТЕЛО ПРОГРАММЫ
 # FF
 
-theBoard = razmer()
-dysplay(theBoard)
-
+while True:
+    a = int(input('Введите первую координату     '))
+    b = int(input('Введите вторую координату     '))
+    print(OdinHod(a,b))
+    if vopros('Вы хотите прервать проверку?'):
+        break
 
 
 
