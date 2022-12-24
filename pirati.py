@@ -83,14 +83,20 @@ def makeMove(boArd,sanduk,x,y):
 
     if miniD == 0:
         sanduk.remove([x,y])
-        return 'Вы нашли сундук с сокровищами на затонувшем корабле!!!!!'
+        print('Вы нашли сундук с сокровищами на затонувшем корабле!!!!!')
+        return True
+    
     else:
         if miniD<10:
             boArd[x][y] = str(miniD)
-            return 'Сундук с сокровищами обнаружен на растоянии %s от гидролокатора' % (miniD)
+            print('Сундук с сокровищами обнаружен на растоянии %s от гидролокатора' % (miniD))
+            return False
+        
         else:
             boArd[x][y] = 'X'
-            return ' Гилролокатори не обнаружил ничего. Сундуки с сокровищами не обнаружены в пределе осягаемости'
+            print(' Гилролокатори не обнаружил ничего. Сундуки с сокровищами не обнаружены в пределе осягаемости')
+            return False
+
 
 def redaktirovanie(predHoda):
     print('''Где следуетопустить гидролокатор? 
@@ -175,7 +181,6 @@ def pravilaIgri():
 #############
 #Основное тело программы
 #############
-
 print('Это игра поиск сокровищ')
 print()
 if vopros('Хотите прочитать инструктаж?'):
@@ -191,6 +196,35 @@ while True:
 
     while kolLokator>0:
         # Показать  сколько осталось гидролокаторов и ненайденных сундучков
-        print('Осталось гидролокаторов %s, а сундучков (ненайденных) %s' % (kolLokator,len(sunduki)))
-        print(sunduki)
-        input()
+        
+
+        if len(sunduki)==1:
+            okon = ''
+        else:
+            okon = 'а'
+        print('осталось %s неиспользованых гидролокаторов. Необходимо найти еще %s сундук%s.' % (kolLokator,len(sunduki),okon))
+        x,y = redaktirovanie(predHody)
+        predHody.append([x,y])
+
+
+        if makeMove(tHEbOARD,sunduki,x,y):
+            for x,y in predHody:
+                makeMove(tHEbOARD,sunduki,x,y)
+        dysplay(tHEbOARD)
+
+        if len(sunduki) == 0:
+            print('Вы нашли все сундуки с слкровищами на затонувшем корабле! Поздравляем!')
+            break
+        kolLokator -= 1
+
+    if kolLokator == 0:
+        print('''   Все гидролокаторы опущены на дно!
+        Придется разворачивать корабль и отправляется домой, в порт!
+        Игра окончена!''')
+        print()
+        print('     Вы не нашли сундуки в следующих местах:')
+        for x,y in sunduki:
+            print(' %s, %s' % (x,y))
+
+    if not vopros('Хотите играть ещe?'):
+        sys.exit()
