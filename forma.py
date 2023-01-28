@@ -1,18 +1,29 @@
 from tkinter import *
+from tkinter import ttk
+
+click = 0
+
+def click_button():
+    global click
+    click +=1
+    btn["text"] = f"Нажатие{click}"
+
+
 window = Tk()
-window.title('Графика')
-window.geometry('800x600')
-canvas = Canvas(window,width=800,height=600,background='#8B00FF')
-canvas.create_line(10,30,1000,30,width=30,fill='red')
-canvas.create_line(10,30,100,30,width=30,fill='black')
-canvas.create_line(25,35,210,35,width=30)
-canvas.create_oval(100,100,200,200,width=2)
-canvas.create_oval(500,500,1000,1000,width=2)
-canvas.create_text(100,100,text='сдохни украина')
-canvas.create_text(200,200,text='хохлы уроды')
-canvas.create_text(250,250,text='нацики бендеровцы сгиньте с земли русской')
-canvas.create_text(140,140,text='щаршкрпгшкрпгркушпшгкупшгкешгпрш5')
-canvas.create_text(260,260,text="теорема пифагора квадрат гипотенузы равен сумме квадратов катетов ")
-canvas.create_text(300,450,text='пока миллионы лежат на диванах вы зарабатываете диванные миллионы лежа на диванах')
-canvas.pack(expand=True,fill=BOTH)
-window.mainloop()
+window.title("Кнопка. ")
+window.geometry('100x600')
+
+btn = ttk.Button(text="Нажми мня", command=click_button)
+btn.pack()
+
+window.mainloop
+
+
+
+
+
+
+
+
+
+

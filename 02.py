@@ -1,4 +1,21 @@
-def ytyyt(per1,per2,per3,per4,per5,per6):
-    return (per1 and per2 and per3) or (per4 and per5 and per6)
-
-print(ytyyt(True,False,True,True,False,True))
+from tkinter import *
+# Создаём окно
+wnd = Tk()
+# Создаём функции для кнопок
+def function1(var):
+btn1["text"] = "Мяу"
+def function2(var):
+lbl2["text"] = "Мур"
+# Создаём кнопки
+btn1 = Button(wnd, command=function1, text = "Помяукать")
+btn2 = Button(wnd, command=function2, text = "Помурчать")
+#Создаём текстовые метки
+lbl1 = Label(wnd)
+lbl2 = Label(wnd)
+# Отображение элементов в окне
+btn1.pack()
+btn2.pack()
+lbl1.pack()
+lbl2.pack()
+# Показ окна
+wnd.mainloop()
