@@ -47,7 +47,7 @@ l3 = Button(fr,width=1,command=button3,bg='#ffff00')
 l4 = Button(fr,width=1,command=button4,bg='#00ff00')
 l5 = Button(fr,width=1,command=button5,bg='#007dff')
 l6 = Button(fr,width=1,command=button6,bg='#0000ff')
-l7 = Button(fr,width=1,command=button7,bg='#FF7518')
+l7 = Button(fr,width=1,command=button7,bg='#7d00ff')
 
 a1.pack()
 b1.pack()
