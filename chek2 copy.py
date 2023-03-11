@@ -1,18 +1,19 @@
 from tkinter import *
 from tkinter.ttk import *
+   
 
 def toSecond():
     selectToSecond = list(lbox1.curselection())
     selectToSecond.reverse()
     lbox2.insert(END, selectToSecond.get())
-    for i in select:
+    for i in lbox1:
         lbox1.delete(i)
 
 def toFirst():
     selectToFirst = list(lbox2.curselection())
     selectToFirst.reverse()
     lbox1.insert(END, selectToFirst.get())
-    for i in select:
+    for i in lbox2:
         lbox2.delete(i)
 
 
@@ -20,7 +21,7 @@ root = Tk()
 
 lbox1 = Listbox(selectmode=EXTENDED)
 
-for i in ('Груша','Картощка','Мясо','Масло','Хлеб','Морковь','Банан','Яблоко'):
+for i in ('Груша','Картошка','Мясо','Масло','Хлеб','Морковь','Банан','Яблоко'):
     lbox1.insert(0,i)
 
 lbox1.pack(side=LEFT)
