@@ -24,8 +24,7 @@ root = Tk()
 ent = Entry(width=40)
 ent.focus_set()
 ent.pack()
-lbl = Label(height=3, fg='orange',
-            bg='darkgreen', font="Verdana 24")
+lbl = Label(height=3, fg='orange',bg='darkgreen', font="Arial 24")
 lbl.pack(fill=X)
  
 ent.bind('<Return>', to_label)

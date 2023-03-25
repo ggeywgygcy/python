@@ -12,6 +12,6 @@ Spinbox(width=7, from_=1, to=50).grid(row=1, column=1, padx=10)
 Label(text='Строк').grid(row=1, column=2, sticky=E)
 Spinbox(width=7, from_=1, to=100).grid(row=1, column=3, sticky=E, padx=10)
 
-Button(text='Spravka').grid(row=2)
+Button(text='Spravka').grid(row=2,column=2)
  
 root.mainloop()

@@ -10,7 +10,7 @@ def enter_leave(event):
  
 root = Tk()
  
-lab1 = Label(width=20, height=3, bg='white',fg='#00FFFF',font='Arial 100')
+lab1 = Label(width=20, height=3, bg='white',fg='#00FFFF')
 lab1.pack()
 lab1.bind('<Enter>', enter_leave)
 lab1.bind('<Leave>', enter_leave)

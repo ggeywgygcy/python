@@ -17,6 +17,9 @@ w = w // 2
 h = h // 2 
 w = w - width_root // 2
 h = h - height_root // 2
+
+
+
 root.geometry('+{}+{}'.format(w, h))
  
 root.mainloop()
